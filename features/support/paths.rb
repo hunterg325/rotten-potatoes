@@ -18,6 +18,7 @@ module NavigationHelpers
 
     # Add more mappings here.
   when /uncheck all other checkboxes/ then '/movies'
+  when /press the refresh button/ then '/movies'
     # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i

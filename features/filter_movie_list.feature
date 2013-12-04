@@ -29,4 +29,7 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   And ensure that other movies are not visible
 
 Scenario: all ratings selected
-  # see assignment
+  Given I check all the rating checkboxes
+  When I go to press the refresh button
+  Then I should see all of the movies
+  And ensure all of the movies are there

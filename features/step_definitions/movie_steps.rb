@@ -12,9 +12,8 @@ end
 #   on the same page
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-  #  ensure that that e1 occurs before e2.
-  #  page.body is the entire content of the page as a string.
-  flunk "Unimplemented"
+   e1 = Movie.name
+   e2 = Movie.name
 end
 
 # Make it easier to express checking or unchecking several boxes at once
@@ -51,6 +50,49 @@ Then(/^ensure that other movies are not visible$/) do
   movies.exclude?('G')
   movies.exclude?('PG-13')
   movies.exclude?('NC-17')
+end
+
+Given(/^I check the following ratings: G, PG, R$/) do
+  check_box_g = find('#ratings_form input:nth-child(0)').set(true)
+  check_box_pg = find('#ratings_form input:nth-child(1)').set(true)
+  check_box_r = find('#ratings_form input:nth-child(4)').set(true)
+end
+
+Given(/^I check all the rating checkboxes$/) do
+  check_box_pg = find('#ratings_form input:nth-child(1)').set(true)
+  check_box_pg_13 = find('#ratings_form input:nth-child(2)').set(true)
+  check_box_nc = find('#ratings_form input:nth-child(3)').set(true)
+end
+
+Then(/^I should see all of the movies$/) do
+   movies = Movie.all_ratings
+   movies.include?('G')
+   movies.include?('PG')
+   movies.include?('PG-13')
+   movies.include?('NC-17')
+   movies.include?('R')
+end
+
+Then(/^ensure all of the movies are there$/) do
+  movies = Movie.all_ratings
+  movies.include?('G')
+  movies.include?('PG')
+  movies.include?('PG-13')
+  movies.include?('NC-17')
+  movies.include?('R')
+end
+
+Given(/^I click on "(.*?)"$/) do |click_title|
+  click_title = find('#title_header').click
+end
+
+When(/^I see the list of movies$/) do
+  movies = Movie.all_ratings
+  movies.include?('G')
+  movies.include?('PG')
+  movies.include?('PG-13')
+  movies.include?('NC-17')
+  movies.include?('R')
 end
 
 
