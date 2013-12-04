@@ -4,8 +4,8 @@ Given /the following movies exist/ do |movies_table|
   movies_table.hashes.each do |movie|
     # each returned element will be a hash whose key is the table header.
     # you should arrange to add that movie to the database here.
+    movie = Movie.create!
   end
-  flunk "Unimplemented"
 end
 
 # Make sure that one string (regexp) occurs before or after another one
@@ -30,3 +30,27 @@ end
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
 end
+
+Given(/^I check the 'PG' and 'R' checkboxes$/) do
+  check_box_pg = find('#ratings_form input:nth-child(1)').set(true)
+  check_box_r = find('#ratings_form input:nth-child(4)').set(true)
+end
+
+Then(/^press "(.*?)" the search form on the homepage$/) do |button|
+  button = find('#ratings_submit')
+end
+
+Then(/^ensure that PG and R movies are visible$/) do
+  movies = Movie.all_ratings
+  movies.include?('PG')
+  movies.include?('R')
+end
+
+Then(/^ensure that other movies are not visible$/) do
+  movies = Movie.all_ratings
+  movies.exclude?('G')
+  movies.exclude?('PG-13')
+  movies.exclude?('NC-17')
+end
+
+

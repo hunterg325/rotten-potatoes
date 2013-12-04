@@ -8,11 +8,12 @@ gem 'rails', '3.2.14'
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
   gem 'sqlite3'
-  gem 'ruby-debug19'
+  gem 'debugger'
   gem 'database_cleaner'
   gem 'capybara'
   gem 'launchy'
   gem 'rspec-rails'
+  gem 'rb-readline', '~> 0.4.2'
 end
 
 group :test do

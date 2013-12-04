@@ -17,6 +17,7 @@ module NavigationHelpers
     when /^the movies page$/ then '/movies'
 
     # Add more mappings here.
+  when /uncheck all other checkboxes/ then '/movies'
     # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i
