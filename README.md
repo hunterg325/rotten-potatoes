@@ -64,3 +64,7 @@ Autograding
 ===========
 From within the solutions/hw3/rottenpotatoes directory, run `bundle install`, `rake db:migrate`, and `rake db:test:prepare`.
 Clone the Ruby Autograder and run `rag/grade3 -a solutions/rottenpotatoes <student_solution>.tar.gz rag/hw3.yml` (note: hw3 autograder not yet merged into master of rag).
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/hunterg325/rotten-potatoes/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
